@@ -3,8 +3,8 @@ import { sql } from "@vercel/postgres";
 import bcrypt from "bcrypt";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
-import { User } from "./Types/Users";
-import { Collection } from "./Types/Types";
+import { User } from "../Types/Users";
+import { Collection } from "../Types/Types";
 
 export const Login = async (formData: FormData) => {
   const email = formData.get("email") ?? "";
@@ -37,9 +37,10 @@ export const signUp = async (formData: FormData) => {
   const hashedPassword = await bcrypt.hash(password as string, 10);
   // step 1 user in db erstellen
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const createUser = await sql`insert into users (email, password) values (${
-    email as string
-  }, ${hashedPassword})`;
+  const createUser =
+    await sql`insert into users (email, password, id) values (${
+      email as string
+    }, ${hashedPassword}, 1)`;
   // step 2 cookie erstellen
   const userResults = await sql`SELECT * from users where email = ${
     email as string

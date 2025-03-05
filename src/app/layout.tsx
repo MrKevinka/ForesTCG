@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { BotBar } from "./components/Atoms/BotBar/BotBar";
-import { TopBar } from "./components/Atoms/TopBar/TopBar";
+import { BotBar } from "../components/Atoms/BotBar/BotBar";
+import { TopBar } from "../components/Atoms/TopBar/TopBar";
 
 export const metadata: Metadata = {
   title: "ForesTCG",
